@@ -1,0 +1,792 @@
+
+
+Building configuration...
+
+Current configuration : 1036 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Area10_Router1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524WCKU-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.0.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 192.168.1.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.0.0 0.0.0.255 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+
+
+
+
+
+Building configuration...
+
+Current configuration : 1294 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ABR_Area0-Area10
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524AVE0-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Tunnel0
+ ip address 172.16.10.1 255.255.255.0
+ mtu 1476
+ tunnel source Serial0/0/0
+ tunnel destination 192.168.13.2
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.2.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ ip address 192.168.11.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 192.168.1.2 255.255.255.0
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.1.0 0.0.0.255 area 0
+ network 192.168.2.0 0.0.0.255 area 0
+ network 172.16.10.0 0.0.0.255 area 0
+ network 192.168.10.0 0.0.0.255 area 10
+ network 192.168.11.0 0.0.0.255 area 10
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+ABR_Area0-Area10#sh ip ospf ne
+
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+192.168.1.1       0   FULL/  -        00:00:37    192.168.1.1     Serial0/0/1
+192.168.21.1      0   FULL/  -        00:00:37    172.16.10.2     Tunnel0
+192.168.13.1      0   FULL/  -        00:00:37    192.168.11.2    Serial0/0/0
+ABR_Area0-Area10#
+
+
+
+
+
+Current configuration : 1071 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Area10_R1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524MX36-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 192.168.13.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 192.168.11.2 255.255.255.0
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.11.0 0.0.0.255 area 10
+ network 192.168.12.0 0.0.0.255 area 10
+ network 192.168.13.0 0.0.0.255 area 10
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Current configuration : 1443 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ABR_10-20
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524WEQY-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Tunnel10
+ ip address 172.16.10.2 255.255.255.0
+ mtu 1476
+ tunnel source Serial0/0/1
+ tunnel destination 192.168.11.1
+!
+!
+interface Tunnel22
+ ip address 172.18.10.1 255.255.255.0
+ mtu 1476
+ tunnel source Serial0/0/0
+ tunnel destination 192.168.23.2
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.14.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.20.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ ip address 192.168.21.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 192.168.13.2 255.255.255.0
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.13.0 0.0.0.255 area 10
+ network 192.168.14.0 0.0.0.255 area 10
+ network 192.168.20.0 0.0.0.255 area 20
+ network 192.168.21.0 0.0.0.255 area 20
+ network 172.16.10.0 0.0.0.255 area 0
+ network 172.18.10.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+ABR_10-20#  sh ip ospf ne
+
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+192.168.13.1      0   FULL/  -        00:00:34    192.168.13.1    Serial0/0/1
+192.168.22.1      0   FULL/  -        00:00:34    192.168.21.2    Serial0/0/0
+192.168.10.1      0   FULL/  -        00:00:34    172.16.10.1     Tunnel10
+192.168.31.1      0   FULL/  -        00:00:34    172.18.10.2     Tunnel22
+
+
+Building configuration...
+
+Current configuration : 1071 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Area20_R1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524DXQ9-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.22.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 192.168.23.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 192.168.21.2 255.255.255.0
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.22.0 0.0.0.255 area 20
+ network 192.168.21.0 0.0.0.255 area 20
+ network 192.168.23.0 0.0.0.255 area 20
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+Area20_R1#           
+
+
+Current configuration : 1241 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ABR_a20-a30
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX152497GM-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Tunnel0
+ ip address 172.18.10.2 255.255.255.0
+ mtu 1476
+ tunnel source Serial0/0/1
+ tunnel destination 192.168.21.1
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.31.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 192.168.30.1 255.255.255.0
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 192.168.23.2 255.255.255.0
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.23.0 0.0.0.255 area 20
+ network 192.168.31.0 0.0.0.255 area 30
+ network 192.168.30.0 0.0.0.255 area 30
+ network 172.18.10.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+ABR_a20-a30#sh ip ospf ne
+
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+192.168.22.1      0   FULL/  -        00:00:36    192.168.23.1    Serial0/0/1
+192.168.32.1      0   FULL/  -        00:00:37    192.168.30.2    Serial0/0/0
+192.168.21.1      0   FULL/  -        00:00:36    172.18.10.1     Tunnel0
+
+
+
+Current configuration : 1014 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname area30
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX15244D57-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.32.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/0/1
+ ip address 192.168.30.2 255.255.255.0
+!
+interface Serial0/1/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.30.0 0.0.0.255 area 30
+ network 192.168.32.0 0.0.0.255 area 30
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+
+
+
+
+
+
+
+
