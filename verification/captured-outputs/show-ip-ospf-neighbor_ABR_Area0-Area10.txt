@@ -1,0 +1,5 @@
+ABR_Area0-Area10#sh ip ospf ne
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+192.168.1.1       0   FULL/  -        00:00:37    192.168.1.1     Serial0/0/1
+192.168.21.1      0   FULL/  -        00:00:37    172.16.10.2     Tunnel0
+192.168.13.1      0   FULL/  -        00:00:37    192.168.11.2    Serial0/0/0
