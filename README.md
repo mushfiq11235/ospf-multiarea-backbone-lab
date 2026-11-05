@@ -686,7 +686,6 @@ ospf-multiarea-backbone-lab/
     │   ├── topology.png
     │   └── screenshots/
     ├── native-virtual-link-reference.md
-    ├── portfolio-description.md
     ├── commit-history.md
     └── screenshots.md
 ```
@@ -706,8 +705,6 @@ ospf-multiarea-backbone-lab/
 
 **Multi-Area OSPF lab (Cisco Packet Tracer).** A self-directed CCNA-level project. I designed a seven-router, four-area OSPF network in which two areas were cut off from the backbone, diagnosed why inter-area routes were missing, and restored backbone connectivity by extending Area 0 across two transit areas. I verified the result with neighbor tables and routing-table output (`O IA` routes) and documented the design, LSDB behaviour, troubleshooting method and the limits of the approach (including how it differs from a native OSPF virtual link).
 
-*Relevant for:* entry-level network engineer, NOC and infrastructure support roles. More variants (GitHub description, LinkedIn text, resume bullets, interview talking points) are in [`docs/portfolio-description.md`](docs/portfolio-description.md).
-
 ---
 
-**Author:** [Your Name](https://github.com/your-username) · Built as hands-on CCNA practice · Licensed under the [MIT License](LICENSE)
+**Author:** Mushfiq · Built as hands-on CCNA practice · Licensed under the [MIT License](LICENSE)
